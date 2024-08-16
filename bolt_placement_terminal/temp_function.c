@@ -1,4 +1,5 @@
 #include "temp_function.h"
+#include <stdlib.h>
 
 void draw_table_lines(WINDOW *sub1)
 {
@@ -109,6 +110,9 @@ void table_header_text(WINDOW *sub1)
 
 void fill_table_text(WINDOW *sub1)
 {
+    // Название таблицы
+    wmove(sub1, 2, 92);
+    waddstr(sub1, "Tabl.40 SP 16.13330.2017");
     // Пункт 1
     wmove(sub1, 7, 2);
     wprintw(sub1, "1. Distance between bolt hole centers in any direction:");
@@ -122,8 +126,8 @@ void fill_table_text(WINDOW *sub1)
     wprintw(sub1, "at Ryn >  375 N/mm^2 (S390, S440, S550, S590, S690)");
     wmove(sub1, 10, 103);
     wprintw(sub1, "3d");
-    wmove(sub1, 11, 5);
-    /*wprintw(sub1, "b) maximum in the outer rows in the absence of bordering corners");
+    /*wmove(sub1, 11, 5);
+    printw(sub1, "b) maximum in the outer rows in the absence of bordering corners");
     wmove(sub1, 12, 8);
     wprintw(sub1, "during tension and compression");
     wmove(sub1, 12, 100);
@@ -132,6 +136,31 @@ void fill_table_text(WINDOW *sub1)
     wmove(sub1, 15, 2);
     wprintw(sub1, "2. Test");
     // Пункт 3
-    wmove(sub1, 25, 2);
-    wprintw(sub1, "3. Test");
+    /*wmove(sub1, 25, 2);
+    wprintw(sub1, "3. Test");*/
+}
+
+int enter_diam_bolt_hole(WINDOW *sub1)
+{
+    int diam_bolt_hole = 0;
+    char info_diam_hole[3];
+    char ch;
+    do
+    {
+        //wclear(sub1);
+        wmove(sub1, 0, 2);
+        waddstr(sub1, "Enter bolt diameter (mm): ");
+        wgetnstr(sub1, info_diam_hole, 2);
+        diam_bolt_hole = atoi(info_diam_hole);
+        wmove(sub1, 1, 2);
+        wprintw(sub1, "Hole diameter is %d mm. If the information is correct then press 'y', if incorrect press 'n' ",
+                diam_bolt_hole);
+        ch = (char) wgetch(sub1);
+    } while (ch != 'y');
+    wmove(sub1, 9, 100);
+    wprintw(sub1, "%.1f mm", diam_bolt_hole * 2.5);
+    wmove(sub1, 10, 102);
+    wprintw(sub1, "%d mm", diam_bolt_hole * 3);
+    //wrefresh(sub1);
+    return diam_bolt_hole;
 }

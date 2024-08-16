@@ -32,9 +32,11 @@ int main(void)
         return (1);
     }
 
+
     draw_table_lines(sub1);
     table_header_text(sub1);
     fill_table_text(sub1);
+    enter_diam_bolt_hole(sub1);
 
     wrefresh(sub1);
     refresh();

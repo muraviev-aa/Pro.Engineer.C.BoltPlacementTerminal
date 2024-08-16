@@ -1,6 +1,7 @@
 #include "temp_function.h"
-#include <stdio.h>
 #include <curses.h>
+#include <stdio.h>
+#include <locale.h>
 
 int main(void)
 {
@@ -32,7 +33,8 @@ int main(void)
     }
 
     draw_table_lines(sub1);
-    table_text(sub1);
+    table_header_text(sub1);
+    fill_table_text(sub1);
 
     wrefresh(sub1);
     refresh();

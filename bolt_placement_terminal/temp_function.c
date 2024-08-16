@@ -93,7 +93,7 @@ void draw_table_lines(WINDOW *sub1)
     waddch(sub1, ACS_LRCORNER);// правый нижний угол
 }
 
-void table_text(WINDOW *sub1)
+void table_header_text(WINDOW *sub1)
 {
     // Шапка первый столбец
     wmove(sub1, 4, 28);
@@ -105,4 +105,33 @@ void table_text(WINDOW *sub1)
     wprintw(sub1, "Bolt");
     wmove(sub1, 5, 100);
     wprintw(sub1, "spacing");
+}
+
+void fill_table_text(WINDOW *sub1)
+{
+    // Пункт 1
+    wmove(sub1, 7, 2);
+    wprintw(sub1, "1. Distance between bolt hole centers in any direction:");
+    wmove(sub1, 8, 5);
+    wprintw(sub1, "a) minimum");
+    wmove(sub1, 9, 9);
+    wprintw(sub1, "at Ryn <= 375 N/mm^2");
+    wmove(sub1, 9, 102);
+    wprintw(sub1, "2,5d");
+    wmove(sub1, 10, 9);
+    wprintw(sub1, "at Ryn >  375 N/mm^2 (S390, S440, S550, S590, S690)");
+    wmove(sub1, 10, 103);
+    wprintw(sub1, "3d");
+    wmove(sub1, 11, 5);
+    /*wprintw(sub1, "b) maximum in the outer rows in the absence of bordering corners");
+    wmove(sub1, 12, 8);
+    wprintw(sub1, "during tension and compression");
+    wmove(sub1, 12, 100);
+    wprintw(sub1, "8d or 12d");*/
+    // Пункт 2
+    wmove(sub1, 15, 2);
+    wprintw(sub1, "2. Test");
+    // Пункт 3
+    wmove(sub1, 25, 2);
+    wprintw(sub1, "3. Test");
 }

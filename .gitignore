@@ -50,3 +50,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+/bolt_placement_terminal/cmake-build-debug
+/bolt_placement_terminal/.idea

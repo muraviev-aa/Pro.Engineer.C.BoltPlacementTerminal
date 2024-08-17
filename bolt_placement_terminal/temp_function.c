@@ -156,6 +156,8 @@ int enter_diam_bolt_hole(WINDOW *sub1)
         wprintw(sub1, "Hole diameter is %d mm. If the information is correct then press 'y', if incorrect press 'n' ",
                 diam_bolt_hole);
         ch = (char) wgetch(sub1);
+        if (ch == 'n')
+            delete_char(sub1, 1, 1, 95);
     } while (ch != 'y');
     wmove(sub1, 9, 100);
     wprintw(sub1, "%.1f mm", diam_bolt_hole * 2.5);
@@ -163,4 +165,14 @@ int enter_diam_bolt_hole(WINDOW *sub1)
     wprintw(sub1, "%d mm", diam_bolt_hole * 3);
     //wrefresh(sub1);
     return diam_bolt_hole;
+}
+
+void delete_char(WINDOW *w, int row, int column, int count_ch)
+{
+    for (int i = 0; i < count_ch; i++)
+    {
+        wmove(w, row, column++);
+        waddrawch(w, ' ');
+        wrefresh(w);
+    }
 }

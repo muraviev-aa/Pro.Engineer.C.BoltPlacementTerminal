@@ -1,7 +1,6 @@
 #include "temp_function.h"
 #include <curses.h>
 #include <stdio.h>
-#include <locale.h>
 
 int main(void)
 {
@@ -31,7 +30,6 @@ int main(void)
         puts("Unable to create subwindow");
         return (1);
     }
-
 
     draw_table_lines(sub1);
     table_header_text(sub1);

@@ -126,18 +126,18 @@ void fill_table_text(WINDOW *sub1)
     wprintw(sub1, "at Ryn >  375 N/mm^2 (S390, S440, S550, S590, S690)");
     wmove(sub1, 10, 103);
     wprintw(sub1, "3d");
-    /*wmove(sub1, 11, 5);
-    printw(sub1, "b) maximum in the outer rows in the absence of bordering corners");
+    wmove(sub1, 11, 5);
+    wprintw(sub1, "b) maximum in the outer rows in the absence of bordering corners");
     wmove(sub1, 12, 8);
     wprintw(sub1, "during tension and compression");
     wmove(sub1, 12, 100);
-    wprintw(sub1, "8d or 12d");*/
+    wprintw(sub1, "8d or 12d");
     // Пункт 2
     wmove(sub1, 15, 2);
     wprintw(sub1, "2. Test");
     // Пункт 3
-    /*wmove(sub1, 25, 2);
-    wprintw(sub1, "3. Test");*/
+    wmove(sub1, 20, 2);
+    wprintw(sub1, "3. Test");
 }
 
 int enter_diam_bolt_hole(WINDOW *sub1)

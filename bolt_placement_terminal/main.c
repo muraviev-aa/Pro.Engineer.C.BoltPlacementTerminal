@@ -23,7 +23,8 @@ int main(void)
     //halfy = maxy >> 1;
 
     // Создаем доп. окна
-    sub1 = subwin(stdscr, maxy - 2, maxx - 2, 1, 1);
+    //sub1 = subwin(stdscr, maxy - 2, maxx - 2, 1, 1);
+    sub1 = subwin(stdscr, maxy - 4, maxx - 2, 3, 1);
     if (sub1 == NULL)
     {
         endwin();
@@ -34,7 +35,7 @@ int main(void)
     draw_table_lines(sub1);
     table_header_text(sub1);
     fill_table_text(sub1);
-    enter_diam_bolt_hole(sub1);
+    //enter_diam_bolt_hole(sub1);
 
     wrefresh(sub1);
     refresh();

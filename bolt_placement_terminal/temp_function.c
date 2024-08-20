@@ -138,32 +138,34 @@ void fill_table_text(WINDOW *sub1)
     // Пункт 3
     wmove(sub1, 18, 2);
     wprintw(sub1, "3. Test");
+    wrefresh(sub1);
 }
 
-int enter_diam_bolt_hole(WINDOW *sub1)
+int enter_diam_bolt_hole(WINDOW *a, WINDOW *sub1)
 {
     int diam_bolt_hole = 0;
     char info_diam_hole[3];
     char ch;
     do
     {
-        //wclear(sub1);
-        wmove(sub1, 0, 2);
-        waddstr(sub1, "Enter bolt diameter (mm): ");
-        wgetnstr(sub1, info_diam_hole, 2);
+        wclear(a);
+        wmove(a, 0, 2);
+        waddstr(a, "Enter bolt diameter (mm): ");
+        wgetnstr(a, info_diam_hole, 2);
         diam_bolt_hole = atoi(info_diam_hole);
-        wmove(sub1, 1, 2);
-        wprintw(sub1, "Hole diameter is %d mm. If the information is correct then press 'y', if incorrect press 'n' ",
+        wmove(a, 1, 2);
+        wprintw(a, "Hole diameter is %d mm. If the information is correct then press 'y', if incorrect press 'n' ",
                 diam_bolt_hole);
-        ch = (char) wgetch(sub1);
+        ch = (char) wgetch(a);
         if (ch == 'n')
-            delete_char(sub1, 1, 1, 95);
+            delete_char(a, 1, 1, 95);
     } while (ch != 'y');
-    wmove(sub1, 9, 100);
+    wmove(sub1, 7, 100);
     wprintw(sub1, "%.1f mm", diam_bolt_hole * 2.5);
-    wmove(sub1, 10, 102);
+    wmove(sub1, 8, 102);
     wprintw(sub1, "%d mm", diam_bolt_hole * 3);
-    //wrefresh(sub1);
+    wrefresh(a);
+    //refresh();
     return diam_bolt_hole;
 }
 

@@ -118,11 +118,11 @@ void fill_table_text(WINDOW *sub1)
     wprintw(sub1, "1. Distance between bolt hole centers in any direction:");
     wmove(sub1, 6, 5);
     wprintw(sub1, "a) minimum");
-    wmove(sub1, 7, 9);
+    wmove(sub1, 7, 11);
     wprintw(sub1, "at Ryn <= 375 N/mm^2");
     wmove(sub1, 7, 102);
     wprintw(sub1, "2,5d");
-    wmove(sub1, 8, 9);
+    wmove(sub1, 8, 11);
     wprintw(sub1, "at Ryn >  375 N/mm^2 (S390, S440, S550, S590, S690)");
     wmove(sub1, 8, 103);
     wprintw(sub1, "3d");
@@ -132,11 +132,33 @@ void fill_table_text(WINDOW *sub1)
     wprintw(sub1, "during tension and compression");
     wmove(sub1, 10, 100);
     wprintw(sub1, "8d or 12d");
+    wmove(sub1, 11, 5);
+    wprintw(sub1, "c) maximum in the middle rows, as well as in the outer rows in the presence");
+    wmove(sub1, 12, 8);
+    wprintw(sub1, "of bordering corners:");
+    wmove(sub1, 13, 11);
+    wprintw(sub1, "when stretched");
+    wmove(sub1, 13, 100);
+    wprintw(sub1, "16d or 24t");
+    wmove(sub1, 14, 11);
+    wprintw(sub1, "when compressed");
+    wmove(sub1, 14, 100);
+    wprintw(sub1, "12d or 18t");
     // Пункт 2
-    wmove(sub1, 13, 2);
-    wprintw(sub1, "2. Test");
+    wmove(sub1, 15, 2);
+    wprintw(sub1, "2. Distance from the center of the bolt hole to the edge of the element");
+    wmove(sub1, 16, 2);
+    wprintw(sub1, "a) minimum along force:");
+    wmove(sub1, 17, 11);
+    wprintw(sub1, "at Ryn <= 375 N/mm^2");
+    wmove(sub1, 17, 103);
+    wprintw(sub1, "2d");
+    wmove(sub1, 18, 11);
+    wprintw(sub1, "at Ryn > 375 N/mm^2 (S390, S440, S550, S590, S690)");
+    wmove(sub1, 18, 102);
+    wprintw(sub1, "2,5d");
     // Пункт 3
-    wmove(sub1, 18, 2);
+    wmove(sub1, 20, 2);
     wprintw(sub1, "3. Test");
     wrefresh(sub1);
 }
@@ -164,6 +186,10 @@ int enter_diam_bolt_hole(WINDOW *a, WINDOW *sub1)
     wprintw(sub1, "%.1f mm", diam_bolt_hole * 2.5);
     wmove(sub1, 8, 102);
     wprintw(sub1, "%d mm", diam_bolt_hole * 3);
+    wmove(sub1, 17, 102);
+    wprintw(sub1, "%d mm", diam_bolt_hole * 2);
+    wmove(sub1, 18, 100);
+    wprintw(sub1, "%.1f mm", diam_bolt_hole * 2.5);
     wrefresh(a);
     //refresh();
     return diam_bolt_hole;

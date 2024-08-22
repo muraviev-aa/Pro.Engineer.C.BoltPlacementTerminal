@@ -113,10 +113,11 @@ void fill_table_text(WINDOW *sub1)
     // Название таблицы
     wmove(sub1, 0, 92);
     waddstr(sub1, "Tabl.40 SP 16.13330.2017");
-    // Пункт 1
+    /* Пункт 1 */
     wmove(sub1, 5, 2);
     wprintw(sub1, "1. Distance between bolt hole centers in any direction:");
-    wmove(sub1, 6, 5);
+    // а)
+    wmove(sub1, 6, 6);
     wprintw(sub1, "a) minimum");
     wmove(sub1, 7, 11);
     wprintw(sub1, "at Ryn <= 375 N/mm^2");
@@ -126,28 +127,31 @@ void fill_table_text(WINDOW *sub1)
     wprintw(sub1, "at Ryn >  375 N/mm^2 (S390, S440, S550, S590, S690)");
     wmove(sub1, 8, 103);
     wprintw(sub1, "3d");
-    wmove(sub1, 9, 5);
+    // б)
+    wmove(sub1, 9, 6);
     wprintw(sub1, "b) maximum in the outer rows in the absence of bordering corners");
-    wmove(sub1, 10, 8);
+    wmove(sub1, 10, 9);
     wprintw(sub1, "during tension and compression");
-    wmove(sub1, 10, 100);
+    wmove(sub1, 10, 99);
     wprintw(sub1, "8d or 12d");
-    wmove(sub1, 11, 5);
+    // в)
+    wmove(sub1, 11, 6);
     wprintw(sub1, "c) maximum in the middle rows, as well as in the outer rows in the presence");
-    wmove(sub1, 12, 8);
+    wmove(sub1, 12, 9);
     wprintw(sub1, "of bordering corners:");
     wmove(sub1, 13, 11);
     wprintw(sub1, "when stretched");
-    wmove(sub1, 13, 100);
+    wmove(sub1, 13, 99);
     wprintw(sub1, "16d or 24t");
     wmove(sub1, 14, 11);
     wprintw(sub1, "when compressed");
-    wmove(sub1, 14, 100);
+    wmove(sub1, 14, 99);
     wprintw(sub1, "12d or 18t");
-    // Пункт 2
+    /* Пункт 2 */
     wmove(sub1, 15, 2);
     wprintw(sub1, "2. Distance from the center of the bolt hole to the edge of the element");
-    wmove(sub1, 16, 2);
+    // а)
+    wmove(sub1, 16, 6);
     wprintw(sub1, "a) minimum along force:");
     wmove(sub1, 17, 11);
     wprintw(sub1, "at Ryn <= 375 N/mm^2");
@@ -157,9 +161,32 @@ void fill_table_text(WINDOW *sub1)
     wprintw(sub1, "at Ryn > 375 N/mm^2 (S390, S440, S550, S590, S690)");
     wmove(sub1, 18, 102);
     wprintw(sub1, "2,5d");
+    // б)
+    wmove(sub1, 19, 6);
+    wprintw(sub1, "b) the same, across the effort:");
+    wmove(sub1, 20, 11);
+    wprintw(sub1, "with cut edges");
+    wmove(sub1, 20, 102);
+    wprintw(sub1, "1,5d");
+    wmove(sub1, 21, 11);
+    wprintw(sub1, "with rolled edges edges");
+    wmove(sub1, 21, 102);
+    wprintw(sub1, "1,2d");
+    // в)
+    wmove(sub1, 22, 6);
+    wprintw(sub1, "c) maximum");
+    wmove(sub1, 22, 100);
+    wprintw(sub1, "4d or 8t");
+    // г)
+    wmove(sub1, 23, 6);
+    wprintw(sub1, "d) minimum in friction connection at any edge and any direction of force");
+    wmove(sub1, 23, 102);
+    wprintw(sub1, "1,3d");
     // Пункт 3
-    wmove(sub1, 20, 2);
-    wprintw(sub1, "3. Test");
+    wmove(sub1, 24, 2);
+    wprintw(sub1, "3. The bolts are staggered. Minimum hole center distance along bolt force");
+    wmove(sub1, 24, 101);
+    wprintw(sub1, "u+1,5d");
     wrefresh(sub1);
 }
 
@@ -172,7 +199,7 @@ int enter_diam_bolt_hole(WINDOW *a, WINDOW *sub1)
     {
         wclear(a);
         wmove(a, 0, 2);
-        waddstr(a, "Enter bolt diameter (mm): ");
+        waddstr(a, "Enter bolt hole diameter (mm): ");
         wgetnstr(a, info_diam_hole, 2);
         diam_bolt_hole = atoi(info_diam_hole);
         wmove(a, 1, 2);

@@ -6,6 +6,7 @@ int main(void)
 {
     WINDOW *sub1, *a;
     int maxx, maxy;
+    int diam_bolt_hole;
     initscr();
 
     // Создание цветовых пар
@@ -40,7 +41,8 @@ int main(void)
     table_header_text(sub1);
     fill_table_text(sub1);
 
-    enter_diam_bolt_hole(a, sub1);
+    diam_bolt_hole = enter_diam_bolt_hole(a, sub1);
+    enter_thick_outer_elem(a, sub1, diam_bolt_hole);
 
     wrefresh(sub1);
     refresh();

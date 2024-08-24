@@ -132,8 +132,8 @@ void fill_table_text(WINDOW *sub1)
     wprintw(sub1, "b) maximum in the outer rows in the absence of bordering corners");
     wmove(sub1, 10, 9);
     wprintw(sub1, "during tension and compression");
-    wmove(sub1, 10, 99);
-    wprintw(sub1, "8d or 12d");
+    wmove(sub1, 9, 99);
+    wprintw(sub1, "8d or 12t");
     // в)
     wmove(sub1, 11, 6);
     wprintw(sub1, "c) maximum in the middle rows, as well as in the outer rows in the presence");
@@ -192,34 +192,77 @@ void fill_table_text(WINDOW *sub1)
 
 int enter_diam_bolt_hole(WINDOW *a, WINDOW *sub1)
 {
-    int diam_bolt_hole = 0;
+    int d_bolt_hole;
     char info_diam_hole[3];
     char ch;
     do
     {
         wclear(a);
         wmove(a, 0, 2);
-        waddstr(a, "Enter bolt hole diameter (mm): ");
+        waddstr(a, "1.Enter bolt hole diameter (mm): ");
         wgetnstr(a, info_diam_hole, 2);
-        diam_bolt_hole = atoi(info_diam_hole);
-        wmove(a, 1, 2);
+        d_bolt_hole = atoi(info_diam_hole);
+        wmove(a, 1, 4);
         wprintw(a, "Hole diameter is %d mm. If the information is correct then press 'y', if incorrect press 'n' ",
-                diam_bolt_hole);
+                d_bolt_hole);
         ch = (char) wgetch(a);
         if (ch == 'n')
             delete_char(a, 1, 1, 95);
     } while (ch != 'y');
     wmove(sub1, 7, 100);
-    wprintw(sub1, "%.1f mm", diam_bolt_hole * 2.5);
+    wprintw(sub1, "%.1f mm", d_bolt_hole * 2.5);
     wmove(sub1, 8, 102);
-    wprintw(sub1, "%d mm", diam_bolt_hole * 3);
+    wprintw(sub1, "%d mm", d_bolt_hole * 3);
     wmove(sub1, 17, 102);
-    wprintw(sub1, "%d mm", diam_bolt_hole * 2);
+    wprintw(sub1, "%d mm", d_bolt_hole * 2);
     wmove(sub1, 18, 100);
-    wprintw(sub1, "%.1f mm", diam_bolt_hole * 2.5);
+    wprintw(sub1, "%.1f mm", d_bolt_hole * 2.5);
+    wmove(sub1, 9, 96);
+    wprintw(sub1, "%d mm or 12t", d_bolt_hole * 8);
+    wmove(sub1, 13, 96);
+    wprintw(sub1, "%d mm or 24t", d_bolt_hole * 16);
+    wmove(sub1, 14, 96);
+    wprintw(sub1, "%d mm or 18t", d_bolt_hole * 12);
+    wmove(sub1, 20, 100);
+    wprintw(sub1, "%.1f mm", d_bolt_hole * 1.5);
+    wmove(sub1, 21, 100);
+    wprintw(sub1, "%.1f mm", d_bolt_hole * 1.2);
+    wmove(sub1, 22, 97);
+    wprintw(sub1, "%d mm or 8t", d_bolt_hole * 4);
+    wmove(sub1, 23, 100);
+    wprintw(sub1, "%.1f mm", d_bolt_hole * 1.3);
     wrefresh(a);
+    wrefresh(sub1);
     //refresh();
-    return diam_bolt_hole;
+    return d_bolt_hole;
+}
+
+void enter_thick_outer_elem(WINDOW *a, WINDOW *sub1, int d_bolt_hole)
+{
+    int thick_outer_elem;
+    char info_thick[3];
+    char ch;
+    do
+    {
+        wclear(a);
+        wmove(a, 0, 2);
+        waddstr(a, "2.Enter the thickness of the thinnest outer element (mm): ");
+        wgetnstr(a, info_thick, 2);
+        thick_outer_elem = atoi(info_thick);
+        wmove(a, 1, 4);
+        wprintw(a, "Element thickness is %d mm. If the information is correct then press 'y', if incorrect press 'n' ",
+                thick_outer_elem);
+        ch = (char) wgetch(a);
+        if (ch == 'n')
+            delete_char(a, 1, 1, 95);
+    } while (ch != 'y');
+    wmove(sub1, 9, 106);
+    wprintw(sub1, "%d mm", thick_outer_elem * 12);
+    wmove(sub1, 13, 106);
+    wprintw(sub1, "%d mm", thick_outer_elem * 24);
+
+    wrefresh(a);
+    wrefresh(sub1);
 }
 
 void delete_char(WINDOW *w, int row, int column, int count_ch)

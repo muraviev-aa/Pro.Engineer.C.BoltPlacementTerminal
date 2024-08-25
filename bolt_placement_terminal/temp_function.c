@@ -209,26 +209,33 @@ int enter_diam_bolt_hole(WINDOW *a, WINDOW *sub1)
         if (ch == 'n')
             delete_char(a, 1, 1, 95);
     } while (ch != 'y');
+    // Пункт 1 а)
     wmove(sub1, 7, 100);
     wprintw(sub1, "%.1f mm", d_bolt_hole * 2.5);
     wmove(sub1, 8, 102);
     wprintw(sub1, "%d mm", d_bolt_hole * 3);
+    // Пункт 2 а)
     wmove(sub1, 17, 102);
     wprintw(sub1, "%d mm", d_bolt_hole * 2);
     wmove(sub1, 18, 100);
     wprintw(sub1, "%.1f mm", d_bolt_hole * 2.5);
+    // Пункт 1 б)
     wmove(sub1, 9, 96);
     wprintw(sub1, "%d mm or 12t", d_bolt_hole * 8);
+    // Пункт 1 в)
     wmove(sub1, 13, 96);
     wprintw(sub1, "%d mm or 24t", d_bolt_hole * 16);
     wmove(sub1, 14, 96);
     wprintw(sub1, "%d mm or 18t", d_bolt_hole * 12);
+    // Пункт 2 б)
     wmove(sub1, 20, 100);
     wprintw(sub1, "%.1f mm", d_bolt_hole * 1.5);
     wmove(sub1, 21, 100);
     wprintw(sub1, "%.1f mm", d_bolt_hole * 1.2);
+    // Пункт 2 в)
     wmove(sub1, 22, 97);
     wprintw(sub1, "%d mm or 8t", d_bolt_hole * 4);
+    // Пункт 2 г)
     wmove(sub1, 23, 100);
     wprintw(sub1, "%.1f mm", d_bolt_hole * 1.3);
     wrefresh(a);
@@ -256,11 +263,17 @@ void enter_thick_outer_elem(WINDOW *a, WINDOW *sub1, int d_bolt_hole)
         if (ch == 'n')
             delete_char(a, 1, 1, 95);
     } while (ch != 'y');
+    // Пункт 1 б)
     wmove(sub1, 9, 106);
     wprintw(sub1, "%d mm", thick_outer_elem * 12);
+    // Пункт 1 в)
     wmove(sub1, 13, 106);
     wprintw(sub1, "%d mm", thick_outer_elem * 24);
-
+    wmove(sub1, 14, 106);
+    wprintw(sub1, "%d mm", thick_outer_elem * 18);
+    // Пункт 2 в)
+    wmove(sub1, 22, 106);
+    wprintw(sub1, "%d mm", thick_outer_elem * 8);
     wrefresh(a);
     wrefresh(sub1);
 }

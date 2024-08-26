@@ -43,6 +43,7 @@ int main(void)
 
     diam_bolt_hole = enter_diam_bolt_hole(a, sub1);
     enter_thick_outer_elem(a, sub1, diam_bolt_hole);
+    enter_dist_across_force_between_rows(a, sub1, diam_bolt_hole);
 
     wrefresh(sub1);
     refresh();

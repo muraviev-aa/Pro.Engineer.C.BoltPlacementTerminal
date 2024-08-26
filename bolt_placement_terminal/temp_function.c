@@ -278,6 +278,32 @@ void enter_thick_outer_elem(WINDOW *a, WINDOW *sub1, int d_bolt_hole)
     wrefresh(sub1);
 }
 
+void enter_dist_across_force_between_rows(WINDOW *a, WINDOW *sub1, int d_bolt_hole)
+{
+    int distance;
+    char info_dist[3];
+    char ch;
+    do
+    {
+        wclear(a);
+        wmove(a, 0, 2);
+        waddstr(a, "3.Enter the distance across the force between the rows (mm): ");
+        wgetnstr(a, info_dist, 2);
+        distance = atoi(info_dist);
+        wmove(a, 1, 4);
+        wprintw(a, "Distance is %d mm. If the information is correct then press 'y', if incorrect press 'n' ",
+                distance);
+        ch = (char) wgetch(a);
+        if (ch == 'n')
+            delete_char(a, 1, 1, 95);
+    } while (ch != 'y');
+    // Пункт 3
+    wmove(sub1, 24, 100);
+    wprintw(sub1, "%.1f mm", (double )distance + (double )(1.5 * d_bolt_hole));
+    wrefresh(a);
+    wrefresh(sub1);
+}
+
 void delete_char(WINDOW *w, int row, int column, int count_ch)
 {
     for (int i = 0; i < count_ch; i++)

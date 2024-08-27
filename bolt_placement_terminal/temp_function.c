@@ -238,6 +238,9 @@ int enter_diam_bolt_hole(WINDOW *a, WINDOW *sub1)
     // Пункт 2 г)
     wmove(sub1, 23, 100);
     wprintw(sub1, "%.1f mm", d_bolt_hole * 1.3);
+    // Вывод результата ввода диаметра
+    wmove(sub1, 0, 2);
+    wprintw(sub1, "Bolt hole diameter is %d mm; ", d_bolt_hole);
     wrefresh(a);
     wrefresh(sub1);
     //refresh();
@@ -299,7 +302,7 @@ void enter_dist_across_force_between_rows(WINDOW *a, WINDOW *sub1, int d_bolt_ho
     } while (ch != 'y');
     // Пункт 3
     wmove(sub1, 24, 100);
-    wprintw(sub1, "%.1f mm", (double )distance + (double )(1.5 * d_bolt_hole));
+    wprintw(sub1, "%.1f mm", (double) distance + (double) (1.5 * d_bolt_hole));
     wrefresh(a);
     wrefresh(sub1);
 }

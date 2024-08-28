@@ -240,7 +240,7 @@ int enter_diam_bolt_hole(WINDOW *a, WINDOW *sub1)
     wprintw(sub1, "%.1f mm", d_bolt_hole * 1.3);
     // Вывод результата ввода диаметра
     wmove(sub1, 0, 2);
-    wprintw(sub1, "Bolt hole diameter is %d mm; ", d_bolt_hole);
+    wprintw(sub1, "Data: bolt hole diameter is %d mm;", d_bolt_hole);
     wrefresh(a);
     wrefresh(sub1);
     //refresh();
@@ -277,6 +277,9 @@ void enter_thick_outer_elem(WINDOW *a, WINDOW *sub1, int d_bolt_hole)
     // Пункт 2 в)
     wmove(sub1, 22, 106);
     wprintw(sub1, "%d mm", thick_outer_elem * 8);
+    // Вывод результата ввода толщины наиболее тонкого наружного элемента
+    wmove(sub1, 0, 37);
+    wprintw(sub1, "thickness outer element %d mm;", thick_outer_elem);
     wrefresh(a);
     wrefresh(sub1);
 }

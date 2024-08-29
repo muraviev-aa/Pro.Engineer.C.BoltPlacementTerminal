@@ -111,7 +111,7 @@ void table_header_text(WINDOW *sub1)
 void fill_table_text(WINDOW *sub1)
 {
     // Название таблицы
-    wmove(sub1, 0, 92);
+    wmove(sub1, 0, 93);
     waddstr(sub1, "Tabl.40 SP 16.13330.2017");
     /* Пункт 1 */
     wmove(sub1, 5, 2);
@@ -240,7 +240,7 @@ int enter_diam_bolt_hole(WINDOW *a, WINDOW *sub1)
     wprintw(sub1, "%.1f mm", d_bolt_hole * 1.3);
     // Вывод результата ввода диаметра
     wmove(sub1, 0, 2);
-    wprintw(sub1, "Data: bolt hole diameter is %d mm;", d_bolt_hole);
+    wprintw(sub1, "Data: hole diameter is %d mm;", d_bolt_hole);
     wrefresh(a);
     wrefresh(sub1);
     //refresh();
@@ -278,8 +278,8 @@ void enter_thick_outer_elem(WINDOW *a, WINDOW *sub1, int d_bolt_hole)
     wmove(sub1, 22, 106);
     wprintw(sub1, "%d mm", thick_outer_elem * 8);
     // Вывод результата ввода толщины наиболее тонкого наружного элемента
-    wmove(sub1, 0, 37);
-    wprintw(sub1, "thickness outer element %d mm;", thick_outer_elem);
+    wmove(sub1, 0, 32);
+    wprintw(sub1, "thickness is %d mm;", thick_outer_elem);
     wrefresh(a);
     wrefresh(sub1);
 }
@@ -306,6 +306,9 @@ void enter_dist_across_force_between_rows(WINDOW *a, WINDOW *sub1, int d_bolt_ho
     // Пункт 3
     wmove(sub1, 24, 100);
     wprintw(sub1, "%.1f mm", (double) distance + (double) (1.5 * d_bolt_hole));
+    // Вывод результата ввода расстояния поперек усилия между рядами отверстий
+    wmove(sub1, 0, 52);
+    wprintw(sub1, "distance is %d mm", distance);
     wrefresh(a);
     wrefresh(sub1);
 }

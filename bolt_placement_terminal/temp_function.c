@@ -305,7 +305,7 @@ void enter_dist_across_force_between_rows(WINDOW *a, WINDOW *sub1, int d_bolt_ho
     } while (ch != 'y');
     // Пункт 3
     wmove(sub1, 24, 100);
-    wprintw(sub1, "%.1f mm", (double) distance + (double) (1.5 * d_bolt_hole));
+    wprintw(sub1, "%.1f mm", (double) (distance + 1.5 * d_bolt_hole));
     // Вывод результата ввода расстояния поперек усилия между рядами отверстий
     wmove(sub1, 0, 52);
     wprintw(sub1, "distance is %d mm", distance);
